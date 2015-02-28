@@ -1,6 +1,7 @@
 package com.gamedev.app.view;
 
 import com.gamedev.app.parser.excel.ExcelParser;
+import com.gamedev.app.parser.json.GameEvent;
 import com.gamedev.app.parser.json.JsonParser;
 
 import javax.swing.*;
@@ -47,6 +48,8 @@ public class App {
                 System.exit(0);
             }
         });
+
+
         controlPanel = new JPanel();
         controlPanel.setLayout(new FlowLayout());
         mainFrame.add(controlPanel);
@@ -63,7 +66,7 @@ public class App {
                 ExcelParser excelParser = new ExcelParser();
                 Map<String, String> fromExcel = excelParser.parseExcel("C:\\Users\\MainUser\\Desktop\\table.xlsx");
                 Iterator<Map.Entry<String, String>> itr = fromExcel.entrySet().iterator();
-                while (itr.hasNext()){
+                while (itr.hasNext()) {
                     Map.Entry<String, String> entry = itr.next();
                     words.add(entry.getKey() + " - " + entry.getValue());
                 }
@@ -79,9 +82,9 @@ public class App {
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
             if (command.equals("CompileJson")) {
+                GameEvent result = new GameEvent();
                 JsonParser jParser = new JsonParser();
-//                jParser.encodeJson(new GameEvent());
-
+//                jParser.encodeJson(result);
                 System.out.println("Ok ;)");
             }
         }
